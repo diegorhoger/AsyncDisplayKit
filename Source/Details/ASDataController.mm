@@ -640,10 +640,9 @@ typedef void (^ASDataControllerCompletionBlock)(NSArray<ASCollectionElement *> *
     NSString *kind = node.collectionElement.supplementaryElementKind ?: ASDataControllerRowNodeKind;
     NSIndexPath *indexPath = [_pendingMap indexPathForElement:node.collectionElement];
     ASSizeRange constrainedSize = [self constrainedSizeForNodeOfKind:kind atIndexPath:indexPath];
-    
-    CGSize oldSize = node.bounds.size;
+    CGSize cellSize = [_dataSource dataController:self rectForRowAtIndexPath:indexPath].size;
     [self _layoutNode:node withConstrainedSize:constrainedSize];
-    if (! CGSizeEqualToSize(node.frame.size, oldSize)) {
+    if (! CGSizeEqualToSize(cellSize, CGSizeZero) && ! CGSizeEqualToSize(node.frame.size, cellSize)) {
       [nodesSizesChanged addObject:node];
     }
   }

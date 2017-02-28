@@ -65,6 +65,11 @@ extern NSString * const ASCollectionInvalidUpdateException;
  */
 - (NSUInteger)numberOfSectionsInDataController:(ASDataController *)dataController;
 
+/**
+ Fetch the rect of a cell for at a given index path
+ */
+- (CGRect)dataController:(ASDataController *)dataController rectForRowAtIndexPath:(NSIndexPath *)indexPath;
+
 @optional
 
 - (NSArray<NSString *> *)dataController:(ASDataController *)dataController supplementaryNodeKindsInSections:(NSIndexSet *)sections;

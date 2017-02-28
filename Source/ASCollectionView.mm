@@ -1557,6 +1557,11 @@ static NSString * const kReuseIdentifier = @"_ASCollectionReuseIdentifier";
   }
 }
 
+- (CGRect)dataController:(ASDataController *)dataController rectForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return [self layoutAttributesForItemAtIndexPath:indexPath].frame;
+}
+
 - (id<ASTraitEnvironment>)dataControllerEnvironment
 {
   return self.collectionNode;
